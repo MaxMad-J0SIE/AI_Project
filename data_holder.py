@@ -1,4 +1,8 @@
 import numpy as np
+from custom_functions import CustomMethodes
+arr = [10, 5, 2, 3, 1, 4, 6, 7, 8, 9]
+CM = CustomMethodes()
+CM.sorter(arr)
 
 class DataHolder:
 

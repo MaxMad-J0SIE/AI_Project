@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
+from skplearn.preprocessing import MinMaxScaler
 from data_holder import DataHolder
 
 data_holder = DataHolder()
