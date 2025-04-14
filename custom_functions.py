@@ -1,3 +1,5 @@
+import numpy as np
+
 class CustomMethodes:
 
     def __init__(self):
@@ -5,8 +7,7 @@ class CustomMethodes:
         self.right = []
         self.pivot = None
         self.aray = [10, 5, 2, 3, 1, 4, 6, 7, 8, 9]
-        self.aray = self.sorter(self.aray)  # Store the sorted result
-
+        # self.aray = self.sorter(self.aray)  # Store the sorted result
 
     def sorter(self, arr):
         if len(arr) <= 1:  # Base case to stop recursion
@@ -15,3 +16,15 @@ class CustomMethodes:
         self.left = [x for x in arr if x < self.pivot]  # Fixed undefined variable
         self.right = [x for x in arr if x > self.pivot]
         return self.sorter(self.left) + [self.pivot] + self.sorter(self.right)  # Fixed infinite recursion
+
+    def neuron(self, inputs, weights, bias):
+        output = 0
+        for i in range (len(inputs)):
+            output += inputs[i] * weights[i]
+        return (output + bias)
+
+    def fill_weights(self, length):
+        weights = np.zeros(length)
+        for i in range(length):
+            weights[i] = np.random.rand()
+        return weights

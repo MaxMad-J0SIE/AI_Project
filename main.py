@@ -1,39 +1,35 @@
-import tensorflow as tf
-import numpy as np
-from skplearn.preprocessing import MinMaxScaler
+from custom_functions import CustomMethodes
 from data_holder import DataHolder
 
-data_holder = DataHolder()
+dh = DataHolder()
+cm = CustomMethodes()
 
 class Main:
-    full_data = data_holder.tesla_stocked_full
-    short_data = data_holder.tesla_stock
+    def __init__(self):
+        self.inputs1 = dh.table1[0, :3]
+        self.inputs2 = dh.table1[1, :3]
+        self.inputs3 = dh.table1[2, :3]
 
-    train_data = full_data[:-5]
-    test_data = full_data[-5:]
+        self.weights1 = dh.weights1
+        self.weights2 = dh.weights2
+        self.weights3 = dh.weights3
+        self.output_weights = dh.output_weights
+        self.output_weights2 = dh.output_weights2
 
-    X_train = train_data[:-1, :-1]
-    y_train = train_data[1:, 3]
+        self.bias = dh.bias
+        self.neural_network()
+    def neural_network(self):
+        print("Function call")
+        # Hidden layer
+        neuron1 = cm.neuron(self.inputs1, self.weights1, self.bias)
+        neuron2 = cm.neuron(self.inputs2, self.weights2, self.bias)
+        neuron3 = cm.neuron(self.inputs3, self.weights3, self.bias)
 
-    X_test = test_data[:-1, :-1]
-    y_test = test_data[1:, 3]
+        # Output layer
+        output1 = cm.neuron([neuron1, neuron2, neuron3], self.output_weights, self.bias)
+        output2 = cm.neuron([neuron1, neuron2, neuron3], self.output_weights2, self.bias)
 
-    print("Training Features (X_train) shape:", X_train.shape)
-    print("Training Target (y_train) shape:", y_train.shape)
-    print("Testing Features (X_test) shape:", X_test.shape)
-    print("Testing Target (y_test) shape:", y_test.shape)
+        print(f"Output 1: {output1}")
+        print(f"Output 2: {output2}")
 
-    scaler = MinMaxScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
-
-    # Reshape y_train and y_test to be 2D arrays as expected by some loss functions
-    y_train = y_train.reshape(-1, 1)
-    y_test = y_test.reshape(-1, 1)
-
-    # Define the model using the Keras Sequential API
-    model = tf.keras.models.Sequential([
-        tf.keras.layers.Dense(64, activation='relu', input_shape=(4,)),  # Input shape is 4 features
-        tf.keras.layers.Dense(32, activation='relu'),
-        tf.keras.layers.Dense(1)  # Output layer with 1 neuron for the predicted closing price
-    ])
+main = Main()
