@@ -1,30 +1,38 @@
 import numpy as np
 
+
 class CustomMethodes:
 
     def __init__(self):
         self.left = []
         self.right = []
         self.pivot = None
-        self.aray = [10, 5, 2, 3, 1, 4, 6, 7, 8, 9]
-        # self.aray = self.sorter(self.aray)  # Store the sorted result
 
     def sorter(self, arr):
-        if len(arr) <= 1:  # Base case to stop recursion
+        if len(arr) <= 1:
             return arr
-        self.pivot = arr[len(arr) // 2]  # Corrected length calculation
-        self.left = [x for x in arr if x < self.pivot]  # Fixed undefined variable
+        self.pivot = arr[len(arr) // 2]
+        self.left = [x for x in arr if x < self.pivot]
         self.right = [x for x in arr if x > self.pivot]
-        return self.sorter(self.left) + [self.pivot] + self.sorter(self.right)  # Fixed infinite recursion
+        return self.sorter(self.left) + [self.pivot] + self.sorter(self.right)
 
-    def neuron(self, inputs, weights, bias):
+    def neuron(self, inputs, weights):
         output = 0
-        for i in range (len(inputs)):
+        for i in range(len(inputs)):
+            print(f"Weight: {weights[i]}")
             output += inputs[i] * weights[i]
-        return (output + bias)
+        bias = np.random.uniform(-1, 1)
+        print(f"Bias: {bias}")
+        return output + bias
 
     def fill_weights(self, length):
         weights = np.zeros(length)
         for i in range(length):
-            weights[i] = np.random.rand()
+            weights[i] = np.random.uniform(-1, 1)
         return weights
+
+    def prepare_values(self):
+        output_weights = self.fill_weights(6)
+        output_weights2 = self.fill_weights(6)
+
+        return output_weights, output_weights2
