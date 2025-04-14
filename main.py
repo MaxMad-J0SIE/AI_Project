@@ -20,7 +20,7 @@ class Main:
         while self.Training:
             print(f"\n\nIteration {self.i}\n\n")
             outputs = self.neural_network()
-            if outputs == tuple(self.answer_key):
+            if cm.check_correct(outputs, self.answer_key, dh.acceptable_error):
                 print("Training complete")
                 self.Training = False
             else:

@@ -29,3 +29,5 @@ class DataHolder:
         self.output_weights2 = cm.fill_weights(3)
 
         self.bias = 0.5
+
+        self.acceptable_error = 0.4

@@ -36,3 +36,15 @@ class CustomMethodes:
         output_weights2 = self.fill_weights(6)
 
         return output_weights, output_weights2
+
+    def check_correct(self, output, answer_key, acceptable_error):
+        if output[0] - acceptable_error > answer_key[0] > output[0] + acceptable_error:
+            if output[1] - acceptable_error > answer_key[1] > output[1] + acceptable_error:
+                if output[2] - acceptable_error > answer_key[2] > output[2] + acceptable_error:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
