@@ -34,8 +34,36 @@ class CustomMethodes:
     def prepare_values(self):
         output_weights = self.fill_weights(6)
         output_weights2 = self.fill_weights(6)
+        output_weights3 = self.fill_weights(6)
 
-        return output_weights, output_weights2
+        return output_weights, output_weights2, output_weights3
+
+    def correction_algorithm(self, output, answer_key):
+        from data_holder import DataHolder
+        dh = DataHolder()
+        if output[0] > answer_key[0]:
+            for i in range(len(dh.output_weights)):
+                dh.output_weights[i] += (output[0] - answer_key[0]) / 100
+        if output[1] > answer_key[1]:
+            for i in range(len(dh.output_weights2)):
+                dh.output_weights2[i] += (output[1] - answer_key[1]) / 100
+        if output[2] > answer_key[2]:
+            for i in range(len(dh.output_weights3)):
+                dh.output_weights3[i] += (output[2] - answer_key[2]) / 100
+
+        modulator = ((output[0] - answer_key[0]) / 100 + (output[1] - answer_key[1]) / 100 + (
+                    output[2] - answer_key[2]) / 100) / 3
+
+        # This part needs to be corrected
+        # Random values are shit
+        # THey need to be calculated
+        for i in range(len(dh.weights1)):
+            dh.weights1 += modulator
+            dh.weights2 += modulator
+            dh.weights3 += modulator
+            dh.weights4 + modulator
+            dh.weights5 += modulator
+            dh.weights6 += modulator
 
     def check_correct(self, output, answer_key, acceptable_error):
         if output[0] - acceptable_error > answer_key[0] > output[0] + acceptable_error:

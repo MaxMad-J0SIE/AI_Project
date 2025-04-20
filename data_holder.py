@@ -22,11 +22,15 @@ class DataHolder:
 
         self.answer_key2 = np.array([0, 0, 0])
 
-        self.weights1 = cm.fill_weights(3)
-        self.weights2 = cm.fill_weights(3)
-        self.weights3 = cm.fill_weights(3)
-        self.output_weights = cm.fill_weights(3)
-        self.output_weights2 = cm.fill_weights(3)
+        self.weights1 = cm.fill_weights(len(self.table1))
+        self.weights2 = cm.fill_weights(len(self.table1))
+        self.weights3 = cm.fill_weights(len(self.table1))
+        self.weights4 = cm.fill_weights(len(self.table1))
+        self.weights5 = cm.fill_weights(len(self.table1))
+        self.weights6 = cm.fill_weights(len(self.table1))
+        self.output_weights = cm.fill_weights(len(self.table1) - len(self.answer_key1))
+        self.output_weights2 = cm.fill_weights(len(self.table1) - len(self.answer_key1))
+        self.output_weights3 = cm.fill_weights(len(self.table1) - len(self.answer_key1))
 
         self.bias = 0.5
 
