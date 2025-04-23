@@ -1,5 +1,6 @@
 from custom_functions import CustomMethodes
 from data_holder import DataHolder
+#some shit didn't work
 
 dh = DataHolder()
 cm = CustomMethodes()

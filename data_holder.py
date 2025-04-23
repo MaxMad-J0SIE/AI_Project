@@ -1,6 +1,7 @@
 import numpy as np
 from custom_functions import CustomMethodes
 cm = CustomMethodes()
+#some shit didn't work
 
 class DataHolder:
 

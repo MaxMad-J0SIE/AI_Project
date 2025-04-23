@@ -1,4 +1,5 @@
 import numpy as np
+#some shit didn't work
 
 
 class CustomMethodes:
