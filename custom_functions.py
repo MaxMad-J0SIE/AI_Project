@@ -7,6 +7,7 @@ class CustomMethodes:
         self.left = []
         self.right = []
         self.pivot = None
+        self.hidden_layer_outputs = []
 
     def sorter(self, arr):
         if len(arr) <= 1:
@@ -15,6 +16,12 @@ class CustomMethodes:
         self.left = [x for x in arr if x < self.pivot]
         self.right = [x for x in arr if x > self.pivot]
         return self.sorter(self.left) + [self.pivot] + self.sorter(self.right)
+
+    def neural_network(self, layers_in_hidden, number_of_neurons_in_hidden, number_of_neurons_in_output):
+        #hidden layer
+        for i in range(layers_in_hidden):
+            for j in range(number_of_neurons_in_hidden):
+                pass
 
     def neuron(self, inputs, weights):
         output = 0
@@ -41,6 +48,10 @@ class CustomMethodes:
     def correction_algorithm(self, output, answer_key):
         from data_holder import DataHolder
         dh = DataHolder()
+
+        # What the dog doing
+        #Dog:
+
         if output[0] > answer_key[0]:
             for i in range(len(dh.output_weights)):
                 dh.output_weights[i] += (output[0] - answer_key[0]) / 100
@@ -66,13 +77,7 @@ class CustomMethodes:
             dh.weights6 += modulator
 
     def check_correct(self, output, answer_key, acceptable_error):
-        if output[0] - acceptable_error > answer_key[0] > output[0] + acceptable_error:
-            if output[1] - acceptable_error > answer_key[1] > output[1] + acceptable_error:
-                if output[2] - acceptable_error > answer_key[2] > output[2] + acceptable_error:
-                    return True
-                else:
-                    return False
-            else:
-                return False
+        if output - acceptable_error < answer_key < output + acceptable_error:
+            return True
         else:
             return False

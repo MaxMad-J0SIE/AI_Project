@@ -9,6 +9,14 @@ class Main:
     def __init__(self):
         self.inputs = dh.table1
 
+        self.weights1 = dh.weights1
+        self.weights2 = dh.weights2
+        self.weights3 = dh.weights3
+        self.weights4 = dh.weights4
+        self.weights5 = dh.weights5
+        self.weights6 = dh.weights6
+        self.output_weights = dh.output_weights
+
         self.bias = dh.bias
 
         self.Training = True
@@ -27,27 +35,23 @@ class Main:
         print("Function call")
 
         # Hidden layer
-        neuron1 = cm.neuron(self.inputs, dh.weights1)
+        neuron1 = cm.neuron(self.inputs, self.weights1)
         print(f"Neuron 1 {neuron1}")
-        neuron2 = cm.neuron(self.inputs, dh.weights2)
+        neuron2 = cm.neuron(self.inputs, self.weights2)
         print(f"Neuron 2 {neuron2}")
-        neuron3 = cm.neuron(self.inputs, dh.weights3)
+        neuron3 = cm.neuron(self.inputs, self.weights3)
         print(f"Neuron 3 {neuron3}")
-        neuron4 = cm.neuron(self.inputs, dh.weights4)
+        neuron4 = cm.neuron(self.inputs, self.weights4)
         print(f"Neuron 4 {neuron4}")
-        neuron5 = cm.neuron(self.inputs, dh.weights5)
+        neuron5 = cm.neuron(self.inputs, self.weights5)
         print(f"Neuron 5 {neuron5}")
-        neuron6 = cm.neuron(self.inputs, dh.weights6)
+        neuron6 = cm.neuron(self.inputs, self.weights6)
         print(f"Neuron 6 {neuron6}")
 
         # Output layer
-        vertical_output = cm.neuron([neuron1, neuron2, neuron3, neuron4, neuron5, neuron6], dh.output_weights)
-        print(f"Vertical output {vertical_output}")
-        horizontal_output = cm.neuron([neuron1, neuron2, neuron3, neuron4, neuron5, neuron6], dh.output_weights2)
-        print(f"Horizontal output {horizontal_output}")
-        diagonal_output = cm.neuron([neuron1, neuron2, neuron3, neuron4, neuron5, neuron6], dh.output_weights3)
-        print(f"Diagonal output {diagonal_output}")
-        return vertical_output, horizontal_output, diagonal_output
+        output_neuron = cm.neuron([neuron1, neuron2, neuron3, neuron4, neuron5, neuron6], self.output_weights)
+        print(f"Output Neuron {output_neuron}")
+        return output_neuron
 
 
 main = Main()
