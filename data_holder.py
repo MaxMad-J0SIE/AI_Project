@@ -1,12 +1,13 @@
 import numpy as np
 from custom_functions import CustomMethodes
 cm = CustomMethodes()
-import mysql.connector
+# holds the data that is used in the neural network
 
 class DataHolder:
 
     def __init__(self):
 
+        # table with the visualization of the number in the image
         self.table1 = np.array([
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
@@ -20,6 +21,7 @@ class DataHolder:
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ])
 
+        # answer key for the first table
         self.answer_key1 = 1
 
         self.table2 = np.array([
@@ -37,10 +39,15 @@ class DataHolder:
 
         self.answer_key2 = 2
 
+        # bias is a value added to the output of the neuron
         self.bias = 0.5
 
+        # speaks for itself dumbass
         self.acceptable_error = 0.4
 
+        # weights to the neurons
+        # there are a lot of them so don't change shit
+        # probably will switch to db's if I can be bothered
         self.weights1_1 = np.array([
             -0.6574254688768402, 0.4956918312758354, -0.3890887802992822, 0.018542867724808287, 0.7456453157372809,
             0.9553778055716617, 0.8473529750302147, -0.4225271519836742, -0.7155473174243616, 0.5002656460674946,

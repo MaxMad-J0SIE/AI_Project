@@ -1,3 +1,5 @@
+# Old "controler" file that i threw out bc it was useless
+
 import random as rng
 str = ""
 
